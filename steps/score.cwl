@@ -13,7 +13,6 @@ requirements:
         #!/usr/bin/env python
         import argparse
         import json
-        import numpy as np
         parser = argparse.ArgumentParser()
         parser.add_argument("-f", "--submissionfile", required=True, help="Submission File")
         parser.add_argument("-r", "--results", required=True, help="Scoring results")
