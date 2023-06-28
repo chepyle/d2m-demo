@@ -31,9 +31,8 @@ steps:
     in:
       - id: entityid
         source: "#submitterUploadSynId"
-      # TODO: replace `valueFrom` with the admin user ID or admin team ID
       - id: principalid
-        valueFrom: "3379097"
+        valueFrom: "3475887"
       - id: permissions
         valueFrom: "download"
       - id: synapse_config
@@ -57,10 +56,9 @@ steps:
       
   download_goldstandard:
     run: https://raw.githubusercontent.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/v1.4/cwl/synapse-get-tool.cwl
-    in:
-      # TODO: replace `valueFrom` with the Synapse ID to the challenge goldstandard
+    in:      
       - id: synapseid
-        valueFrom: "syn18081597"
+        valueFrom: "syn51758732"
       - id: synapse_config
         source: "#synapseConfig"
     out:

@@ -25,11 +25,11 @@ requirements:
             invalid_reasons = ['Expected FileEntity type but found ' + args.entity_type]
         else:
             with open(args.submission_file,"r") as sub_file:
-                message = sub_file.read()
+                message = sub_file.readlines()
             invalid_reasons = []
             prediction_file_status = "VALIDATED"
-            if not message.startswith("test"):
-                invalid_reasons.append("Submission must have test column")
+            if not len(message)==5:
+                invalid_reasons.append("Submission must have 5 entries")
                 prediction_file_status = "INVALID"
         result = {'submission_errors': "\n".join(invalid_reasons),
                   'submission_status': prediction_file_status}

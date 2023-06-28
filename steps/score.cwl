@@ -13,16 +13,21 @@ requirements:
         #!/usr/bin/env python
         import argparse
         import json
+        import numpy as np
         parser = argparse.ArgumentParser()
         parser.add_argument("-f", "--submissionfile", required=True, help="Submission File")
         parser.add_argument("-r", "--results", required=True, help="Scoring results")
         parser.add_argument("-g", "--goldstandard", required=True, help="Goldstandard for scoring")
 
         args = parser.parse_args()
-        score = 1 + 1
+        with open(args.submissionfile,"r") as sub_file:
+                message = sub_file.readlines()
+        with open(args.goldstandard,"r") as sub_file:
+                gt = sub_file.readlines()
+        score = sum([(float(m)-float(g))**2 for m,g in zip(message,gt)])            
         prediction_file_status = "SCORED"
 
-        result = {'auc': score,
+        result = {'sse': score,
                   'submission_status': prediction_file_status}
         with open(args.results, 'w') as o:
           o.write(json.dumps(result))
